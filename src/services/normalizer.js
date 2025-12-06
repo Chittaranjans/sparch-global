@@ -15,27 +15,23 @@ class JobNormalizer {
     if (!title) return '';
     
     // Clean up the title
-    let normalized = title.trim().toLowerCase();
+    let normalized = title.trim();
     
-    // Replace common abbreviations
+    // Replace common abbreviations (using word boundaries to avoid partial matches)
     const replacements = {
-      'sr.': 'senior',
-      'sr ': 'senior ',
-      'jr.': 'junior',
-      'jr ': 'junior ',
-      'mgr': 'manager',
-      'dev': 'developer',
-      'eng': 'engineer'
+      '\\bsr\\.?\\b': 'Senior',
+      '\\bjr\\.?\\b': 'Junior',
+      '\\bmgr\\b': 'Manager'
     };
     
-    Object.entries(replacements).forEach(([abbr, full]) => {
-      normalized = normalized.replace(new RegExp(abbr, 'gi'), full);
+    Object.entries(replacements).forEach(([pattern, replacement]) => {
+      normalized = normalized.replace(new RegExp(pattern, 'gi'), replacement);
     });
     
     // Convert to title case
     normalized = normalized
       .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ')
       .replace(/\s+/g, ' ')
       .trim();

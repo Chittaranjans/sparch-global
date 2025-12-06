@@ -1,345 +1,518 @@
-# Job Search Platform 🔍
+# AI Job Search Platform 🚀
 
-A complete Job Ingestion & Search Service with **AI-powered chatbot interface** featuring a RAG (Retrieval-Augmented Generation) system for natural language job search.
+A **full-stack AI-powered job search platform** with **Next.js frontend**, **Express.js backend**, and **Gemini AI integration** featuring intelligent chatbot, resume analysis, and advanced job matching.
 
 ## 📋 Project Overview
 
-This platform ingests job postings from multiple sources, normalizes them into a unified schema, removes duplicates, and provides both a **powerful REST API** and an **intelligent AI chatbot interface** for searching jobs using natural language.
+This is a complete job search ecosystem that combines traditional job board functionality with cutting-edge AI capabilities. The platform ingests jobs from multiple sources, normalizes data, removes duplicates, and provides both a modern Next.js web application and RESTful API for comprehensive job search experience.
 
-### Key Features
+### 🎯 Key Features
 
-✅ **AI Chatbot Interface** - Natural language job search with RAG system
-✅ **Multi-Source Ingestion** - Ingests jobs from 2 different data sources with different formats
-✅ **Data Normalization** - Converts all jobs to a unified schema
-✅ **Smart Deduplication** - Removes duplicate job postings across sources using similarity algorithms
-✅ **Advanced Search** - Search by keyword, location, salary, company
-✅ **In-Memory Storage** - No database required, perfect for demo/testing
-✅ **RESTful API** - Clean, documented endpoints
-✅ **Beautiful UI** - Modern, responsive chat interface
+#### **AI-Powered Features**
+✅ **Intelligent Chatbot** - Natural language job search with Gemini AI RAG system
+✅ **Resume Analysis** - AI-powered resume parsing and job matching
+✅ **Interview Preparation** - Auto-generated interview questions for each job
+✅ **Similar Jobs** - ML-based job recommendations with similarity scores
+
+#### **Core Platform Features**
+✅ **Modern Next.js Frontend** - TypeScript + Tailwind CSS responsive UI
+✅ **Multi-Source Ingestion** - Ingests jobs from multiple data formats
+✅ **Smart Deduplication** - Levenshtein distance algorithm removes duplicates
+✅ **Advanced Filtering** - Search by role, location, salary, remote/hybrid, experience
+✅ **Application Tracking** - Manage applications through hiring pipeline stages
+✅ **Favorites System** - Save and organize favorite job listings
+✅ **Real-time Updates** - Instant job posting with module cache clearing
+✅ **RESTful API** - Clean, documented backend endpoints
+
+## 🖼️ Screenshots
+
+### Home Page - Job Listings
+![Home Page](public/home-page.png)
+*Main job listing page with advanced filters and AI-powered search*
+
+### AI Chatbot Interface
+![AI Chat](public/chat-interface.png)
+*Floating AI assistant powered by Gemini for natural language job search*
+
+### Job Details Page
+![Job Details](public/job-details.png)
+*Comprehensive job details with AI interview prep and similar jobs*
+
+### Post Job Interface
+![Post Job](public/new-post.png)
+*Easy-to-use job posting form with real-time validation*
+
+### Dashboard & Analytics
+![Dashboard](public/dashboard.png)
+*Application tracking dashboard with pipeline stages*
+
+### All Jobs Listing
+![Jobs](public/jobs.png)
+*Browse all available job postings with filtering options*
+
+### Favorites Management
+![Favorites](public/favjobs.png)
+*Saved jobs with quick access and filtering*
+
+### Interview Preparation
+![Interview](public/interview.png)
+*AI-generated interview questions and preparation resources*
 
 ---
 
-## 🏗️ Project Structure
+## 🏗️ Architecture & Tech Stack
 
+### **Frontend (Next.js 16)**
 ```
-job_task/
-├── data/                      # Demo data sources
-│   ├── source1.js            # Tech Jobs Portal format
-│   └── source2.js            # Career Connect format
-├── src/
-│   ├── models/
-│   │   └── jobSchema.js      # Unified job schema (UnifiedJob, Location, Salary)
-│   ├── services/
-│   │   ├── normalizer.js     # Normalizes jobs from different sources
-│   │   ├── deduplicator.js   # Deduplication logic with Levenshtein distance
-│   │   ├── ingestion.js      # Ingestion service for multiple sources
-│   │   └── search.js         # Search and filtering service
-│   └── app.js                # Express server and API routes
-├── public/                    # Frontend AI Chatbot Interface
-│   ├── index.html            # Chat UI
-│   ├── styles.css            # Modern responsive styling
-│   └── app.js                # RAG system implementation
-├── tests/
-│   └── test.js               # Test suite
-├── package.json
-├── README.md                 # This file
-├── RAG_DOCUMENTATION.md      # RAG system details
-└── SUMMARY.md               # Implementation summary
+frontend/
+├── app/
+│   ├── page.tsx                 # Home page with job listings
+│   ├── jobs/
+│   │   ├── page.tsx            # All jobs page with filters
+│   │   └── [id]/page.tsx       # Individual job details
+│   ├── dashboard/page.tsx      # Application tracking dashboard
+│   ├── favorites/page.tsx      # Saved jobs management
+│   ├── post-job/page.tsx       # Job posting form
+│   └── layout.tsx              # Root layout with ChatWidget
+├── components/
+│   ├── Header.tsx              # Navigation header
+│   ├── ChatWidget.tsx          # Floating AI chat assistant
+│   ├── JobCard.tsx             # Reusable job listing card
+│   └── FilterSidebar.tsx       # Advanced search filters
+├── lib/
+│   └── api.ts                  # API client for backend
+└── store/
+    └── useStore.ts             # Zustand state management
 ```
+
+**Technologies:**
+- ⚡ Next.js 16.0.7 with Turbopack
+- 🔷 TypeScript for type safety
+- 🎨 Tailwind CSS 4 for styling
+- 📦 Zustand for state management
+- 🔧 Bun runtime for fast builds
+
+### **Backend (Express.js)**
+```
+src/
+├── models/
+│   └── jobSchema.js            # Unified job data model
+├── services/
+│   ├── agenticRAG.js          # Gemini AI RAG system
+│   ├── resumeAnalyzer.js     # AI resume parsing
+│   ├── similarJobs.js        # Job recommendation engine
+│   ├── interviewPrep.js      # AI interview question generator
+│   ├── normalizer.js         # Multi-source data normalizer
+│   ├── deduplicator.js       # Duplicate detection algorithm
+│   ├── ingestion.js          # Data ingestion service
+│   └── search.js             # Search & filtering logic
+├── app.js                      # Express server & API routes
+└── data/
+    ├── source1.js             # Tech Jobs Portal data
+    └── source2.js             # Career Connect data
+```
+
+**Technologies:**
+- 🚀 Express.js REST API
+- 🤖 Google Gemini AI (gemini-pro)
+- 🧮 Levenshtein distance for deduplication
+- 📝 In-memory storage with file persistence
+- 🔧 Bun runtime
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### Prerequisites
+- **Bun** runtime installed ([Install Bun](https://bun.sh))
+- **Gemini API Key** (free from [Google AI Studio](https://makersuite.google.com/app/apikey))
+
+### 1. Clone & Install
 
 ```bash
+# Install backend dependencies
 bun install
+
+# Install frontend dependencies
+cd frontend
+bun install
+cd ..
 ```
 
-### 2. Configure Environment Variables
+### 2. Configure Environment
 
+**Backend (.env):**
 ```bash
-# Copy the example environment file
 cp .env.example .env
-
-# Edit .env and add your Gemini API key
-# Get your free API key from: https://makersuite.google.com/app/apikey
 ```
 
-Your `.env` file should look like:
+Edit `.env`:
 ```env
-GEMINI_API_KEY=your_actual_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3000
 NODE_ENV=development
 ```
 
-### 3. Run the Server
-
-```bash
-bun start
+**Frontend (frontend/.env.local):**
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-The server will start on `http://localhost:3000`
+### 3. Start the Application
 
-**Open your browser and go to:** `http://localhost:3000`
+**Terminal 1 - Backend:**
+```bash
+bun start
+# Server runs on http://localhost:3000
+```
 
-You'll see the AI chatbot interface where you can ask questions like:
-- "Show me software engineer jobs"
-- "I want jobs in USA"
-- "Find frontend developer positions in London"
-- "What jobs pay more than $100,000?"
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+bun run dev
+# Frontend runs on http://localhost:3001
+```
 
-### 4. Run Tests
+### 4. Access the Application
+
+🌐 **Frontend:** http://localhost:3001
+🔌 **Backend API:** http://localhost:3000
+📖 **API Docs:** http://localhost:3000/api
+
+### 5. Run Tests
 
 ```bash
 bun test
 ```
 
-###🤖 AI Chatbot Interface
-
-### Natural Language Job Search
-
-The Web Interface
-- **GET /** - AI Chatbot Interface (open in browser)
-
-### API Endpoints
-- **GET /api** - API DocumentationFind frontend developer positions in London"
-- "Show me jobs at TechCorp"
-- "What jobs pay more than $100,000?"
-- "D1vOps positions in Berlin"
-- "Data scientist roles in Europe"
-
-### How It Works
-
-1. **Intent Analysis**: Understands what you're looking for
-2. **Parameter Extraction**: Extracts role, location, company, salary from your query
-3. **Smart Retrieval**: Searches the job database
-4. **Natural Response**: Generates human-friendly responses with job results
-
-See [RAG_DOCUMENTATION.md](RAG_DOCUMENTATION.md) for detailed information about the AI system.
-
 ---
 
-##  4. Development Mode (with auto-reload)
+## 🎯 Feature Deep Dive
 
-```bash
-bun dev
+### 🤖 AI-Powered Features
+
+#### **1. Intelligent Chatbot (Floating Widget)**
+- Always accessible floating button on every page
+- Natural language understanding via Gemini AI
+- Contextual job recommendations
+- Auto-suggested prompts for new users
+- Seamless navigation to job details from chat
+
+**Example Queries:**
+```
+"Show me software engineer jobs"
+"Find remote positions in USA"
+"What jobs pay over $100k?"
+"I need frontend roles in London"
 ```
 
+#### **2. Resume Analysis**
+- Upload resume (PDF/DOCX) for AI parsing
+- Extracts skills, experience, education
+- Auto-matches jobs based on resume content
+- Provides match percentage for each job
+
+#### **3. Interview Preparation**
+- AI-generated interview questions for each job
+- Role-specific technical questions
+- Behavioral interview scenarios
+- Company culture fit questions
+
+#### **4. Similar Jobs Recommendation**
+- ML-based similarity scoring
+- Finds jobs matching skills and experience
+- Cross-company recommendations
+- Similarity percentage for transparency
+
+### 🔍 Advanced Search & Filtering
+
+#### **Multi-Criteria Filtering:**
+- **Work Type:** Remote, Hybrid, On-site
+- **Experience Level:** Entry, Mid, Senior, Lead
+- **Salary Range:** Min/Max with currency support
+- **Location:** City, State, Country matching
+- **Keywords:** Title, Company, Description search
+- **Date Posted:** Recent, This week, This month
+
+#### **Smart Search Features:**
+- Real-time search results
+- Pagination with customizable page size
+- Sort by relevance, date, salary
+- Filter combination support
+
+### 📊 Application Tracking Dashboard
+
+Track your job applications through the hiring pipeline:
+1. **Applied** - Initial application submitted
+2. **Screening** - Resume under review
+3. **Interview** - Interview scheduled/completed
+4. **Offer** - Job offer received
+5. **Rejected** - Application declined
+
+**Dashboard Features:**
+- Drag-and-drop between stages
+- Application status history
+- Interview date tracking
+- Notes for each application
+
+### ⭐ Favorites System
+
+- Save unlimited jobs for later review
+- Quick access from any page
+- Bulk actions (remove multiple)
+- Persistent across sessions
+
+### 📝 Job Posting
+
+**Easy job posting with:**
+- Multi-step form with validation
+- File upload support (job descriptions)
+- Real-time duplicate detection
+- Instant visibility (no refresh needed)
+- Success notification with processing steps
 ---
 
-## 📡 API Endpoints
+## 📡 API Reference
 
 ### Base URL: `http://localhost:3000`
 
-### 1. **GET /** - API Documentation
-Returns API information and available endpoints.
+### **Job Endpoints**
 
-```bash
-curl http://localhost:3000/
-```
-2
-### 2. **GET /api/jobs** - Basic Search
-Search jobs by keyword and/or location.
+#### `GET /api/jobs` - List All Jobs
+Search jobs with optional filters.
 
 **Query Parameters:**
-- `keyword` (optional) - Search term for title, company, or description
-- `location` (optional) - Location filter (city, state, or country)
-- `page` (optional, default: 1) - Page number
-- `limit` (optional, default: 10) - Results per page
-
-**Examples:**
-```bash
-# Search for engineers
-curl "http://localhost:3000/api/jobs?keyword=engineer"
-
-# Search in specific location
-curl "http://localhost:3000/api/jobs?location=usa"
-
-# Combined search
-curl "http://localhost:3000/api/jobs?keyword=developer&location=london"
-
-# Pagination
-curl "http://localhost:3000/api/jobs?keyword=engineer&page=1&limit=5"
-```
-
-### 3. **GET /api/jobs/search** - Advanced Search
-Advanced search with multiple filters.
-
-**Query Parameters:**
-- `keyword` - Search term
+- `keyword` - Search term for title/company/description
 - `location` - Location filter
-- `company` - Company name filter
-- `m4nSalary` - Minimum salary
-- `maxSalary` - Maximum salary
-- `currency` - Currency code (USD, EUR, GBP, etc.)
-- `page` - Page number
-- `limit` - Results per page
+- `page` - Page number (default: 1)
+- `limit` - Results per page (default: 100)
 
-**Examples:**
 ```bash
-# Search by salary range
-curl "http://localhost:3000/api/jobs/search?minSalary=80000&maxSalary=150000&currency=USD"
-
-# Search by company
-curl "http://localhost:3000/api/jobs/search?company=techcorp"
-
-# Complex search
-curl "http://localhost:3000/api/jobs/search?keyword=developer&location=berlin&minSalary=70000&currency=EUR"
+curl "http://localhost:3000/api/jobs?keyword=engineer&location=usa"
 ```
 
-### 4. **GET /api/jobs/:id** - Get Job by ID
-Retrieve a specific job by its ID.
+#### `GET /api/jobs/search` - Advanced Search
+Multi-criteria search with filters.
+
+**Query Parameters:**
+- `keyword`, `location`, `company`
+- `minSalary`, `maxSalary`, `currency`
+- `remote` - true/false
+- `experienceLevel` - Entry/Mid/Senior/Lead
+- `page`, `limit`
+
+```bash
+curl "http://localhost:3000/api/jobs/search?minSalary=80000&remote=true&experienceLevel=Senior"
+```
+
+#### `GET /api/jobs/:id` - Get Job Details
+Retrieve specific job by ID.
 
 ```bash
 curl http://localhost:3000/api/jobs/JOB-1
 ```
 
-### 5. **GET /api/stats** - Ingestion Statistics
-Get statistics about ingested jobs.
+#### `POST /api/jobs/post` - Post New Job
+Create a new job listing.
+
+**Request Body:**
+```json
+{
+  "title": "Senior Software Engineer",
+  "company": "TechCorp",
+  "location": "San Francisco, CA",
+  "salary": "$120k - $180k",
+  "description": "We are hiring...",
+  "requirements": ["5+ years experience", "React", "Node.js"]
+}
+```
+
+#### `GET /api/jobs/rejected` - Get Rejected Jobs
+List jobs rejected as duplicates.
+
+```bash
+curl http://localhost:3000/api/jobs/rejected
+```
+
+### **AI Endpoints**
+
+#### `POST /api/chat` - AI Chat Assistant
+Natural language job search with Gemini AI.
+
+**Request Body:**
+```json
+{
+  "message": "Show me software engineer jobs in USA",
+  "resumeText": "optional resume content for context"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "I found 5 software engineer positions in USA...",
+  "relevantJobs": [...],
+  "aiPowered": true
+}
+```
+
+#### `POST /api/resume/analyze` - Analyze Resume
+AI-powered resume parsing and job matching.
+
+**Request:** Multipart form with resume file
+
+**Response:**
+```json
+{
+  "skills": ["JavaScript", "React", "Node.js"],
+  "experience": "5 years",
+  "matchedJobs": [...],
+  "recommendations": [...]
+}
+```
+
+#### `GET /api/jobs/:id/similar` - Similar Jobs
+Find jobs similar to a specific posting.
+
+```bash
+curl http://localhost:3000/api/jobs/JOB-1/similar
+```
+
+#### `GET /api/jobs/:id/interview-prep` - Interview Prep
+Get AI-generated interview questions for a job.
+
+```bash
+curl http://localhost:3000/api/jobs/JOB-1/interview-prep
+```
+
+### **Utility Endpoints**
+
+#### `GET /api/stats` - Platform Statistics
+Get ingestion and platform stats.
 
 ```bash
 curl http://localhost:3000/api/stats
 ```
 
-### 6. **GET /api/suggestions** - Search Suggestions
-Get 5opular keywords, locations, and companies.
+#### `GET /api/suggestions` - Search Suggestions
+Get popular keywords, locations, companies.
 
 ```bash
 curl http://localhost:3000/api/suggestions
 ```
 
-### 7. **GET /api/locations** - All Locations
-Get 6ist of all unique job locations.
+#### `GET /api/locations` - All Locations
+List all unique job locations.
 
-```bash
-curl http://localhost:3000/api/locations
-```
-
-### 8. **GET /api/companies** - All Companies
-Get 7ist of all unique companies.
-
-```bash
-curl http://localhost:3000/api/companies
-```
+#### `GET /api/companies` - All Companies
+List all unique companies.
 
 ---
 
-## 🔧 How It Works
+## 🔧 Technical Implementation
 
-### 1. **Data Ingestion**
+### **Data Normalization Pipeline**
 
-Two data sources with different formats:
+1. **Ingestion**: Load jobs from multiple sources with different schemas
+2. **Normalization**: Convert to unified schema with standardized fields
+3. **Deduplication**: Use Levenshtein distance to detect duplicates
+4. **Enrichment**: Add computed fields (normalized locations, salary ranges)
+5. **Storage**: Persist to in-memory store and file system
 
-**Source 1 (Tech Jobs Portal):**
-```javascript
+### **Deduplication Algorithm**
+
+Uses **Levenshtein Distance** for fuzzy matching:
+- **Title Similarity:** 92% threshold
+- **Company Similarity:** 95% threshold  
+- **Location Similarity:** 90% threshold
+
+When duplicates detected:
+- Keep most recent posting
+- Mark older as rejected
+- Generate detailed duplicate report
+
+### **AI Integration (Gemini Pro)**
+
+**RAG System Components:**
+1. **Intent Analysis**: Understand user query intent
+2. **Entity Extraction**: Extract job criteria (role, location, salary)
+3. **Vector Search**: Match query to relevant jobs
+4. **Response Generation**: Generate natural language response
+5. **Job Ranking**: Sort by relevance to query
+
+**AI Services:**
+- Chat Assistant (agenticRAG.js)
+- Resume Analyzer (resumeAnalyzer.js)
+- Similar Jobs Finder (similarJobs.js)
+- Interview Prep Generator (interviewPrep.js)
+
+### **Frontend State Management**
+
+**Zustand Store:**
+```typescript
 {
-  jobTitle: "Senior Software Engineer",
-  company: "TechCorp Inc.",
-  location: "San Francisco, CA, USA",
-  salary: "$120,000 - $180,000",
-  // ...
+  jobs: Job[],
+  favorites: string[],
+  applications: Application[],
+  filters: FilterState,
+  // Actions
+  addFavorite, removeFavorite,
+  addApplication, updateApplicationStage
 }
 ```
 
-**Source 2 (Career Connect):**
-```javascript
-{
-  title: "Sr. Software Engineer",
-  companyName: "TechCorp Inc.",
-  city: "San Francisco",
-  country: "USA",
-  salaryMin: 120000,
-  salaryMax: 180000,
-  // ...
-}
-```
+### **Real-Time Updates**
 
-### 2. **Normalization**
+- Module cache clearing on job post
+- Automatic data reload after mutations
+- Optimistic UI updates for better UX
+- No page refresh needed
 
-Both are converted to a unified schema:
-```javascript
-{
-  id: "JOB-1",
-  title: "Senior Software Engineer",
-  company: "TechCorp Inc.",
+---
+
+## 📊 Data Models
+
+### Unified Job Schema
+```typescript
+interface UnifiedJob {
+  id: string;                    // Unique identifier
+  title: string;                 // Normalized job title
+  company: string;               // Company name
   location: {
-    city: "San Francisco",
-    state: "CA",
-    country: "USA",
-    normalized: "san francisco, ca, usa"
-  },
+    city: string;
+    state?: string;
+    country: string;
+    normalized: string;          // Lowercase searchable format
+  };
   salary: {
-    min: 120000,
-    max: 180000,
-    currency: "USD",
-    formatted: "$120,000 - $180,000"
-  },
-  // ...
+    min: number;
+    max: number;
+    currency: string;            // USD, EUR, GBP, etc.
+    formatted: string;           // Display format
+  };
+  description: string;           // Full job description
+  requirements: string[];        // Required skills/qualifications
+  responsibilities: string[];    // Job duties
+  benefits: string[];           // Company benefits
+  workType: 'Remote' | 'Hybrid' | 'On-site';
+  experienceLevel: 'Entry' | 'Mid' | 'Senior' | 'Lead';
+  postedDate: string;           // ISO date string
+  expiryDate?: string;
+  sourceId: string;             // Data source identifier
+  originalId: string;           // ID from original source
+  url?: string;                 // Application URL
 }
 ```
 
-### 3. **Deduplication**
-
-Uses **Levenshtein distance algorithm** to:
-- Compare job titles (85% similarity threshold)
-- Match companies (90% similarity threshold)
-- Match locations (85% similarity threshold)
-- Keep the most recent posting when duplicates found
-
-### 4. **Search**
-
-Supports:
-- **Keyword matching** - Searches title, company, description
-- **Location filtering** - Matches city, state, country
-- **Salary filtering** - Min/max range with currency
-- **Company filtering** - Exact or partial match
-- **Pagination** - Page and limit controls
-
----
-
-## 📊 Example Responses
-
-### Search Response
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": "JOB-1",
-      "title": "Senior Software Engineer",
-      "company": "TechCorp Inc.",
-      "location": {
-        "city": "San Francisco",
-        "state": "CA",
-        "country": "USA",
-        "normalized": "san francisco, ca, usa"
-      },
-      "salary": {
-        "min": 120000,
-        "max": 180000,
-        "currency": "USD",
-        "formatted": "$120,000 - $180,000"
-      },
-      "description": "...",
-      "postedDate": "2025-12-01",
-      "sourceId": "source1",
-      "originalId": "TC001"
-    }
-  ],
-  "pagination": {
-    "page": 1,
-    "limit": 10,
-    "totalResults": 15,
-    "totalPages": 2,
-    "hasNextPage": true,
-    "hasPrevPage": false
-  },
-  "filters": {
-    "keyword": "engineer",
-    "location": "usa"
-  }
+### Application Tracking Schema
+```typescript
+interface Application {
+  id: string;
+  jobId: string;
+  status: 'Applied' | 'Screening' | 'Interview' | 'Offer' | 'Rejected';
+  appliedDate: string;
+  notes: string;
+  interviewDate?: string;
 }
 ```
 
@@ -347,96 +520,171 @@ Supports:
 
 ## 🧪 Testing
 
-Run the test suite:
+### Run Test Suite
 ```bash
 bun test
 ```
 
-Tests include:
-1. ✅ Data ingestion from both sources
-2. ✅ Deduplication verification
-3. ✅ Basic keyword search
-4. ✅ Location filtering
-5. ✅ Advanced search with multiple filters
-6. ✅ Search suggestions
+### Test Coverage
+✅ Data ingestion from multiple sources
+✅ Normalization accuracy
+✅ Deduplication algorithm
+✅ Basic keyword search
+✅ Location filtering
+✅ Advanced multi-criteria search
+✅ Salary range filtering
+✅ API endpoint responses
+✅ Search suggestions
 
 ---
 
-## 🎯 Key Implementation Details
+## 🚀 Recent Improvements & Bug Fixes
 
-### Normalization Features
-- **Title normalization**: Converts "Sr." to "Senior", standardizes capitalization
-- **Location parsing**: Handles various formats (city, state, country)
-- **Salary parsing**: Supports multiple currencies and formats ($120k, £60,000, etc.)
+### **v2.0 - Next.js Migration & AI Integration**
 
-### Deduplication Algorithm
-- Uses **Levenshtein distance** for fuzzy string matching
-- Configurable similarity thresholds
-- Keeps most recent posting when duplicates found
-- Generates detailed deduplication report
+#### **Frontend Overhaul**
+- ✅ Migrated from static HTML to **Next.js 16** with TypeScript
+- ✅ Built responsive UI with **Tailwind CSS 4**
+- ✅ Implemented client-side routing for SPA experience
+- ✅ Added state management with **Zustand**
+- ✅ Created reusable component library
 
-### Search Capabilities
-- **Full-text search** across title, company, description
-- **Location search** with normalized matching
-- **Salary filtering** with currency support
-- **Pagination** for large result sets
-- **Sorting** by posting date (most recent first)
+#### **AI Features Added**
+- ✅ Integrated **Gemini Pro AI** for natural language processing
+- ✅ Built floating **ChatWidget** accessible on all pages
+- ✅ Implemented RAG system for intelligent job search
+- ✅ Added resume analysis with AI-powered matching
+- ✅ Created interview prep question generator
+- ✅ Built similar jobs recommendation engine
+
+#### **Critical Bug Fixes**
+- ✅ **Real-time Updates:** Fixed module caching - jobs now appear immediately after posting
+- ✅ **Pagination:** Increased default limit from 10 to 100 jobs
+- ✅ **Duplicate Detection:** Fixed overly aggressive matching (92%/95%/90% thresholds)
+- ✅ **Title Normalization:** Fixed corruption bug ("sr fullstack engineer" → "Seniorfullstack Developereloper")
+- ✅ **Route Ordering:** Fixed `/api/jobs/rejected` endpoint being caught by `/:id` route
+- ✅ **Gemini Model:** Updated from `gemini-1.5-flash` to `gemini-pro` for v1beta API compatibility
+
+#### **UX Enhancements**
+- ✅ Added success overlay with processing steps on job post
+- ✅ Implemented floating chat button with pulse indicator
+- ✅ Added suggested prompts for new chat users
+- ✅ Created smooth animations and transitions
+- ✅ Fixed text contrast for better readability
+- ✅ Made all pages mobile-responsive
+
+#### **Performance Optimizations**
+- ✅ Module cache clearing for instant data updates
+- ✅ Optimistic UI updates for better perceived performance
+- ✅ Lazy loading for job images and details
+- ✅ Debounced search inputs to reduce API calls
 
 ---
 
-## 📝 Notes
+## 📈 Future Enhancements
 
-- **No database required** - All data stored in memory
-- **Demo data** - Includes 16 sample jobs from 2 sources
-- **RESTful API** - Clean, standard REST endpoints
-- **CORS enabled** - Ready for frontend integration
-- **Extensible** - Easy to add more data sources
+### **Planned Features**
+- [ ] User authentication & profiles
+- [ ] Persistent database (MongoDB/PostgreSQL)
+- [ ] Email notifications for new job matches
+- [ ] Advanced analytics dashboard
+- [ ] Job alerts and saved searches
+- [ ] Company profiles and reviews
+- [ ] Salary insights and market data
+- [ ] Resume builder tool
+- [ ] Video interview integration
+- [ ] Mobile app (React Native)
+
+### **Technical Improvements**
+- [ ] Redis caching for faster searches
+- [ ] GraphQL API alongside REST
+- [ ] WebSocket for real-time updates
+- [ ] Elasticsearch for advanced search
+- [ ] Docker containerization
+- [ ] CI/CD pipeline setup
+- [ ] Unit & integration test coverage to 90%+
+- [ ] Performance monitoring with Sentry
 
 ---
 
-## 🔄 Adding More Data Sources
+## 🤝 Contributing
 
-To add a new data source:
+This is a demonstration project. For production use:
 
-1. Create new data file in `data/` folder
-2. Add normalization function in `src/services/normalizer.js`
-3. Add ingestion method in `src/services/ingestion.js`
-4. Import and ingest in `src/app.js`
+1. **Add Database:** Replace in-memory storage with PostgreSQL/MongoDB
+2. **Authentication:** Implement JWT-based auth with refresh tokens
+3. **Rate Limiting:** Add API rate limiting for production
+4. **Caching:** Implement Redis for search results
+5. **Monitoring:** Add logging and error tracking
+6. **Security:** Implement CORS policies, input validation, SQL injection prevention
 
-Example:
+---
+
+## 📝 Development Notes
+
+### Adding New Data Sources
+
+1. Create data file in `/data/` folder:
 ```javascript
-// In normalizer.js
-static normalizeSource3(job, internalId) {
-  // Your normalization logic
-}
+// data/source3.js
+module.exports = [
+  {
+    // Your custom schema
+  }
+];
+```
 
-// In ingestion.js
-ingestSource3(rawJobs) {
-  // Your ingestion logic
+2. Add normalization in `normalizer.js`:
+```javascript
+static normalizeSource3(job, internalId) {
+  return new UnifiedJob({
+    // Map your fields to unified schema
+  });
 }
 ```
 
----
+3. Add ingestion method in `ingestion.js`:
+```javascript
+ingestSource3(rawJobs) {
+  const normalized = rawJobs.map((job, index) => 
+    Normalizer.normalizeSource3(job, `source3-${index}`)
+  );
+  this.uniqueJobs.push(...normalized);
+}
+```
 
-## 🚀 Next Steps
-
-Potential enhancements:
-- Add persistent storage (MongoDB, PostgreSQL)
-- Implement job posting API
-- Add user authentication
-- Build frontend UI
-- Add real-time updates with WebSockets
-- Implement job recommendations
-- Add analytics dashboard
+4. Call in `app.js`:
+```javascript
+const source3Data = require('./data/source3');
+ingestionService.ingestSource3(source3Data);
+```
 
 ---
 
 ## 📄 License
 
-MIT
+MIT License - Free to use for learning and demonstration purposes.
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
 
-Built as a demonstration of job search platform architecture.
+Built as a comprehensive demonstration of modern full-stack development with AI integration.
+
+**Tech Stack:** Next.js 16, TypeScript, Tailwind CSS, Express.js, Gemini AI, Bun
+
+**Contact:** For questions or collaboration opportunities, please open an issue.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Google Gemini AI** for powering intelligent features
+- **Next.js Team** for the amazing React framework
+- **Tailwind CSS** for utility-first styling
+- **Bun** for blazing-fast runtime
+- **Open Source Community** for inspiration and tools
+
+---
+
+**⭐ If you found this project useful, please consider giving it a star!**
