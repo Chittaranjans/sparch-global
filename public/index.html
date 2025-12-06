@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Job Search Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 AI Job Search Assistant</h1>
+                <p>Ask me anything about jobs - I'll find the perfect match for you!</p>
+            </div>
+            <div class="header-actions">
+                <button id="uploadResumeBtn" class="upload-btn">
+                    📄 Upload Resume
+                </button>
+                <div class="stats" id="stats">
+                    <span id="totalJobs">Loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar with suggestions -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>💡 Example Questions</h3>
+                    <div class="suggestion-list">
+                        <button class="suggestion-btn" data-query="Show me all software engineer jobs">
+                            Software engineer jobs
+                        </button>
+                        <button class="suggestion-btn" data-query="I want jobs in USA">
+                            Jobs in USA
+                        </button>
+                        <button class="suggestion-btn" data-query="Find frontend developer positions in London">
+                            Frontend jobs in London
+                        </button>
+                        <button class="suggestion-btn" data-query="Show me jobs at TechCorp">
+                            Jobs at TechCorp
+                        </button>
+                        <button class="suggestion-btn" data-query="What jobs pay more than $100,000?">
+                            High salary jobs ($100k+)
+                        </button>
+                        <button class="suggestion-btn" data-query="Show all DevOps positions">
+                            DevOps positions
+                        </button>
+                        <button class="suggestion-btn" data-query="Jobs in Europe">
+                            Jobs in Europe
+                        </button>
+                        <button class="suggestion-btn" data-query="Show me all available jobs">
+                            All jobs
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>🏢 Companies</h3>
+                    <div id="companiesList" class="filter-list">Loading...</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>📍 Locations</h3>
+                    <div id="locationsList" class="filter-list">Loading...</div>
+                </div>
+            </aside>
+
+            <!-- Chat Interface -->
+            <main class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>Hello! I'm your AI Job Search Assistant. I can help you find jobs based on:</p>
+                            <ul>
+                                <li>🎯 Job role or title</li>
+                                <li>📍 Location (city, country)</li>
+                                <li>🏢 Company name</li>
+                                <li>💰 Salary range</li>
+                            </ul>
+                            <p>Just ask me in natural language! For example: "Show me software engineer jobs in USA"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <form id="chatForm">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Ask me about jobs... (e.g., 'Show me developer jobs in London')"
+                            autocomplete="off"
+                        >
+                        <button type="submit" id="sendBtn">
+                            <span>Send</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2 10L18 10M18 10L11 3M18 10L11 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="jobDetails"></div>
+        </div>
+    </div>
+
+    <!-- Resume Upload Modal -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content resume-modal">
+            <span class="modal-close" id="closeResumeModal">&times;</span>
+            <h2>📄 Upload Your Resume</h2>
+            <p class="modal-subtitle">Get AI-powered job recommendations with match scores</p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p>Drop your resume here or click to browse</p>
+                <p class="upload-hint">Supports: .txt, .pdf (text will be extracted)</p>
+                <input type="file" id="resumeFileInput" accept=".txt,.pdf" hidden>
+                <button class="browse-btn" onclick="document.getElementById('resumeFileInput').click()">
+                    Browse Files
+                </button>
+            </div>
+
+            <div class="divider">OR</div>
+
+            <div class="paste-area">
+                <label for="resumeText">Paste your resume text:</label>
+                <textarea 
+                    id="resumeText" 
+                    placeholder="Paste your resume content here...&#10;&#10;Example:&#10;John Doe&#10;Software Engineer with 5 years of experience in JavaScript, React, Node.js...&#10;&#10;Experience:&#10;- Senior Software Engineer at TechCorp (3 years)&#10;- Frontend Developer at WebSolutions (2 years)&#10;&#10;Skills: React, JavaScript, Python, AWS, Docker..."
+                    rows="12"
+                ></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button id="analyzeResumeBtn" class="primary-btn">
+                    🔍 Analyze & Get Matches
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

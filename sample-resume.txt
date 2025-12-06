@@ -1,0 +1,89 @@
+SARAH JOHNSON
+Senior Full Stack Developer
+Email: sarah.johnson@email.com | Phone: (555) 123-4567
+Location: San Francisco, CA | Open to Remote
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Full Stack Developer with 6 years of experience building scalable web applications and leading development teams. Expert in modern JavaScript frameworks, cloud architecture, and DevOps practices. Proven track record of delivering high-impact products that serve millions of users.
+
+TECHNICAL SKILLS
+Programming Languages: JavaScript, TypeScript, Python, Java, Go
+Frontend: React, Next.js, Vue.js, Angular, Redux, HTML5, CSS3, Tailwind CSS
+Backend: Node.js, Express, NestJS, FastAPI, Spring Boot, GraphQL, REST APIs
+DevOps: Docker, Kubernetes, Jenkins, GitHub Actions, AWS CodePipeline
+Cloud: AWS (EC2, S3, Lambda, DynamoDB, RDS, CloudFront), Azure, GCP
+Databases: PostgreSQL, MongoDB, Redis, MySQL, Elasticsearch
+Tools: Git, Jira, Confluence, Figma, Postman, VS Code
+
+PROFESSIONAL EXPERIENCE
+
+Senior Full Stack Developer | TechCorp Inc. | Jan 2021 - Present
+• Led development of microservices architecture serving 5M+ daily active users
+• Architected and implemented React/Node.js application reducing page load time by 60%
+• Mentored team of 5 junior developers, conducting code reviews and technical training
+• Implemented CI/CD pipelines reducing deployment time from 2 hours to 15 minutes
+• Collaborated with product team to define technical requirements and roadmap
+• Technologies: React, TypeScript, Node.js, AWS, Docker, Kubernetes, PostgreSQL
+
+Full Stack Developer | WebSolutions Ltd. | Jun 2019 - Dec 2020
+• Developed and maintained 10+ client-facing web applications using React and Node.js
+• Optimized database queries reducing API response time by 40%
+• Implemented authentication and authorization using JWT and OAuth 2.0
+• Built RESTful APIs handling 100K+ requests per day
+• Created automated testing suite with 85% code coverage
+• Technologies: React, JavaScript, Express, MongoDB, Redis, AWS
+
+Frontend Developer | Digital Innovations | Jan 2018 - May 2019
+• Built responsive web interfaces using React and modern CSS frameworks
+• Collaborated with UX designers to implement pixel-perfect designs
+• Integrated third-party APIs and services (Stripe, SendGrid, Google Maps)
+• Improved application accessibility achieving WCAG 2.1 AA compliance
+• Technologies: React, JavaScript, HTML5, CSS3, Bootstrap, Webpack
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+University of California, Berkeley | 2014 - 2018
+GPA: 3.8/4.0
+Relevant Coursework: Data Structures, Algorithms, Database Systems, Web Development
+
+CERTIFICATIONS
+
+• AWS Certified Solutions Architect - Associate (2022)
+• AWS Certified Developer - Associate (2021)
+• MongoDB Certified Developer (2020)
+• Google Cloud Professional Cloud Architect (2023)
+
+PROJECTS
+
+E-Commerce Platform (Personal Project)
+• Built full-stack e-commerce application with Next.js, Node.js, and PostgreSQL
+• Implemented payment processing with Stripe, user authentication, and admin dashboard
+• Deployed on AWS using EC2, RDS, and S3 for static assets
+• GitHub: github.com/sarahjohnson/ecommerce-platform
+
+Real-Time Chat Application
+• Developed WebSocket-based chat app using React, Node.js, and Socket.io
+• Implemented real-time messaging, typing indicators, and read receipts
+• Deployed using Docker containers on AWS ECS
+• Live Demo: chat.sarahjohnson.dev
+
+ACHIEVEMENTS & LEADERSHIP
+
+• Won "Best Innovation" award at TechCorp Hackathon 2022
+• Speaker at React Conference 2023: "Building Scalable React Applications"
+• Contributor to open-source projects: React, Next.js, Express (100+ merged PRs)
+• Organized local JavaScript meetup with 200+ members
+• Mentored 15+ junior developers through career transitions
+
+LANGUAGES
+
+• English (Native)
+• Spanish (Conversational)
+
+PREFERRED WORK LOCATIONS
+
+• San Francisco, CA
+• New York, NY  
+• Remote (US-based)
+• London, UK

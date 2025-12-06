@@ -1,0 +1,10 @@
+Build a Job Ingestion & Search Service:
+– Two different sources each provide an array of raw job postings.
+– You need to ingest them into a unified schema.
+– Deduplicate jobs (e.g., same role posted multiple times) across sources.
+– Normalize key fields: job title, location (city/country), salary range if present.
+– Provide an endpoint to query jobs by keyword and location.
+In ~30 minutes, aim for:
+– Ingestion functions for 2 sources.
+– Dedup and normalization.
+– A simple search endpoint.

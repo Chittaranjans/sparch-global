@@ -1,0 +1,24 @@
+{
+  "name": "job-search-platform",
+  "version": "1.0.0",
+  "description": "Job Ingestion & Search Service with in-memory storage",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "bun src/app.js",
+    "dev": "bun --watch src/app.js",
+    "test": "bun tests/test.js"
+  },
+  "keywords": [
+    "jobs",
+    "search",
+    "ingestion",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2"
+  }
+}
