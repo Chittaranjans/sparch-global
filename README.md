@@ -27,36 +27,36 @@ This is a complete job search ecosystem that combines traditional job board func
 ## 🖼️ Screenshots
 
 ### Home Page - Job Listings
-![Home Page](public/Screenshot%202025-12-06%20at%207.30.11%20PM.png)
+![Home Page](public/home-page.png)
 *Main job listing page with advanced filters and AI-powered search*
 
 ### AI Chatbot Interface
-![AI Chat](public/Screenshot%202025-12-06%20at%207.30.21%20PM.png)
+![AI Chat](public/chat-interface.png)
 *Floating AI assistant powered by Gemini for natural language job search*
 
 ### Job Details Page
-![Job Details](public/Screenshot%202025-12-06%20at%207.30.31%20PM.png)
+![Job Details](public/job-details.png)
 *Comprehensive job details with AI interview prep and similar jobs*
 
 ### Post Job Interface
-![Post Job](public/Screenshot%202025-12-06%20at%207.30.52%20PM.png)
+![Post Job](public/new-post.png)
 *Easy-to-use job posting form with real-time validation*
 
 ### Dashboard & Analytics
-![Dashboard](public/Screenshot%202025-12-06%20at%207.30.59%20PM.png)
+![Dashboard](public/dashboard.png)
 *Application tracking dashboard with pipeline stages*
 
+### All Jobs Listing
+![Jobs](public/jobs.png)
+*Browse all available job postings with filtering options*
+
 ### Favorites Management
-![Favorites](public/Screenshot%202025-12-06%20at%207.31.06%20PM.png)
+![Favorites](public/favjobs.png)
 *Saved jobs with quick access and filtering*
 
-### Advanced Search Filters
-![Filters](public/Screenshot%202025-12-06%20at%207.31.28%20PM.png)
-*Powerful filtering options for precise job search*
-
-### Mobile Responsive Design
-![Mobile View](public/Screenshot%202025-12-06%20at%207.31.39%20PM.png)
-*Fully responsive design optimized for mobile devices*
+### Interview Preparation
+![Interview](public/interview.png)
+*AI-generated interview questions and preparation resources*
 
 ---
 
