@@ -70,22 +70,22 @@ class JobDeduplicator {
       job2.location.normalized
     );
     
-    // Threshold-based matching
-    const TITLE_THRESHOLD = 0.85;
-    const COMPANY_THRESHOLD = 0.90;
-    const LOCATION_THRESHOLD = 0.85;
+    // Threshold-based matching (made stricter to avoid false positives)
+    const TITLE_THRESHOLD = 0.92;
+    const COMPANY_THRESHOLD = 0.95;
+    const LOCATION_THRESHOLD = 0.90;
     
     // Consider it a duplicate if:
-    // 1. Same company AND similar title AND similar location
+    // 1. EXACT same company AND very similar title AND similar location
     const sameCompanyMatch = 
       companySimilarity >= COMPANY_THRESHOLD &&
       titleSimilarity >= TITLE_THRESHOLD &&
       locationSimilarity >= LOCATION_THRESHOLD;
     
-    // 2. Very similar title AND location (even if different companies - might be reposting)
+    // 2. Nearly identical title AND location (cross-posting detection - made stricter)
     const crossPostMatch = 
-      titleSimilarity >= 0.95 &&
-      locationSimilarity >= 0.90;
+      titleSimilarity >= 0.98 &&
+      locationSimilarity >= 0.95;
     
     return sameCompanyMatch || crossPostMatch;
   }

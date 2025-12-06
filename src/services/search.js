@@ -11,7 +11,7 @@ class JobSearchService {
    * Search jobs by keyword and location
    */
   search(params = {}) {
-    const { keyword = '', location = '', page = 1, limit = 10 } = params;
+    const { keyword = '', location = '', page = 1, limit = 50 } = params;
     
     let results = this.ingestionService.getAllJobs();
     
@@ -74,7 +74,7 @@ class JobSearchService {
       currency = null,
       company = '',
       page = 1,
-      limit = 10
+      limit = 50
     } = params;
     
     let results = this.ingestionService.getAllJobs();
